@@ -4,6 +4,7 @@ import {
   getContentById,
   deleteContent,
 } from '../controllers/contentController.js';
+
 const router = express.Router();
 
 router.get('/', getAllContent);

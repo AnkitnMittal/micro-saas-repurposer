@@ -1,8 +1,9 @@
 import express from 'express';
-import { repurposeContent, getTask } from '../controllers/taskController.js';
+import { submitTask, getTaskStatus } from '../controllers/taskController.js';
+
 const router = express.Router();
 
-router.post('/repurpose', repurposeContent);
-router.get('/:id', getTask);
+router.post('/repurpose', submitTask);
+router.get('/:id', getTaskStatus);
 
 export default router;
