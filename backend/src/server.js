@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import { connectDB } from './config/db.js';
 import { initSocket } from './config/socket.js';
 import taskRoutes from './routes/taskRoutes.js';
+import contentRoutes from './routes/contentRoutes.js';
 
 dotenv.config();
 connectDB();
@@ -26,6 +27,7 @@ app.use(
 );
 
 app.use('/api/tasks', taskRoutes);
+app.use('/api/content', contentRoutes);
 
 initSocket(server);
 

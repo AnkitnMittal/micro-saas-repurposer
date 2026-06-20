@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const connectDB = () => {
+export const connectDB = () => {
   mongoose
-    .connect(DB_URI)
+    .connect(process.env.DB_URI)
     .then((res) => {
       console.log('Connected to MongoDB');
     })
@@ -11,5 +11,3 @@ const connectDB = () => {
       process.exist(1);
     });
 };
-
-export default connectDB;
