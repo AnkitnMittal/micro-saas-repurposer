@@ -2,11 +2,11 @@ import Task from '../models/Task.js';
 
 export const submitTask = async (req, res) => {
   try {
-    const { url, platform } = req.body;
+    const { url, platformTarget } = req.body;
 
     const newTask = await Task.create({
       sourceUrl: url,
-      targetPlatform: platform,
+      targetPlatform: platformTarget,
     });
 
     /**
