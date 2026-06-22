@@ -1,4 +1,5 @@
 import Task from '../models/Task.js';
+import { repurposeQueue } from '../queues/taskQueue.js';
 
 export const submitTask = async (req, res) => {
   try {
@@ -14,8 +15,14 @@ export const submitTask = async (req, res) => {
      * Return a 202 Accepted status and the task ID to the client
      */
 
+    await repurposeQueue.add('process-url', {
+      taskId: newTask._id,
+      url: newTask.sourceUrl,
+      platformTarget: newTask.targetPlatform,
+    });
+
     res.status(202).json({
-      message: 'Task accepted for processing',
+      message: 'Task accepted & queued for processing',
       taskId: newTask._id,
       status: newTask.status,
     });

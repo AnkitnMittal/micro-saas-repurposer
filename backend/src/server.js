@@ -10,6 +10,9 @@ import { initSocket } from './config/socket.js';
 import taskRoutes from './routes/taskRoutes.js';
 import contentRoutes from './routes/contentRoutes.js';
 
+import './queues/taskQueue.js';
+import './queues/taskWorker.js';
+
 dotenv.config();
 connectDB();
 

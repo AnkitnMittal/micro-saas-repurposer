@@ -5,7 +5,7 @@ import { Link2, Sparkles, Loader2 } from 'lucide-react';
 
 export default function Dashboard() {
   const [url, setUrl] = useState('');
-  const [platformTarget, setPlatformTarget] = useState('');
+  const [platformTarget, setPlatformTarget] = useState('summary');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [responseMessage, setResponseMessage] = useState('');
 
@@ -32,7 +32,7 @@ export default function Dashboard() {
 
     try {
       const response = await axios.post(
-        'http://localhost::5000/api/tasks/repurpose',
+        'http://localhost:5000/api/tasks/repurpose',
         {
           url: url,
           platformTarget: platformTarget,
@@ -111,7 +111,9 @@ export default function Dashboard() {
 
         {/* Temporary response feedback display */}
         {responseMessage && (
-          <div className='mt-4 p-3 rounded-lg text-sm ${responseMessage.includes("Success") ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}'>
+          <div
+            className={`mt-4 p-3 rounded-lg text-sm ${responseMessage.includes('Success') ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}
+          >
             {responseMessage}
           </div>
         )}
